@@ -18,6 +18,9 @@ FROM $USER_BASE_IMG
 # hadolint ignore=DL3008,DL3009
 RUN apt-get update -q \
     && apt-get install -y --no-install-recommends \
-        # Add more dependencies here
-        cowsay \
-        sudo
+        python3.9-venv \
+        pandoc \
+        texlive-latex-base \
+        texlive-latex-recommended \
+        texlive-formats-extra \
+        texlive-fonts-recommended
