@@ -24,3 +24,11 @@ RUN apt-get update -q \
         texlive-latex-recommended \
         texlive-formats-extra \
         texlive-fonts-recommended
+
+ARG MUSL_SCRIPT=apply-musl.sh
+ARG MUSL_DIR="/usr/local/musl"
+
+COPY scripts /tmp/
+
+RUN /bin/bash "/tmp/${MUSL_SCRIPT}"
+ENV PATH="${PATH}:${MUSL_DIR}/bin"
