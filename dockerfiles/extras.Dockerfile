@@ -27,8 +27,11 @@ RUN apt-get update -q \
 
 ARG MUSL_SCRIPT=apply-musl.sh
 ARG MUSL_DIR="/usr/local/musl"
+ARG SEL4CP_SCRIPT=apply-sel4cp_tools.sh
 
 COPY scripts /tmp/
 
 RUN /bin/bash "/tmp/${MUSL_SCRIPT}"
 ENV PATH="${PATH}:${MUSL_DIR}/bin"
+
+RUN /bin/bash "/tmp/${SEL4CP_SCRIPT}"
