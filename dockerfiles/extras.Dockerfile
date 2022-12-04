@@ -28,6 +28,8 @@ RUN apt-get update -q \
 ARG MUSL_SCRIPT=apply-musl.sh
 ARG MUSL_DIR="/usr/local/musl"
 ARG SEL4CP_SCRIPT=apply-sel4cp_tools.sh
+ARG ARM_SCRIPT=apply-arm_toolchain.sh
+ARG ARM_DIR="/usr/local"
 
 COPY scripts /tmp/
 
@@ -35,3 +37,6 @@ RUN /bin/bash "/tmp/${MUSL_SCRIPT}"
 ENV PATH="${PATH}:${MUSL_DIR}/bin"
 
 RUN /bin/bash "/tmp/${SEL4CP_SCRIPT}"
+
+RUN /bin/bash "/tmp/${ARM_SCRIPT}"
+ENV PATH="${PATH}:${ARM_DIR}/gcc-arm-x86_64-aarch64-none-elf/bin"
